@@ -12,7 +12,7 @@
         "ghcr.io/devcontainers/features/sshd:1": {
             "version": "latest"
         },
-        "ghcr.io/devcontainers/features/python:1": {},
+        // "ghcr.io/devcontainers/features/python:1": {},
         "ghcr.io/meaningful-ooo/devcontainer-features/fish:2": {},
         "ghcr.io/devcontainers-extra/features/ripgrep:1": {},
         "ghcr.io/devcontainers-extra/features/fd:1": {},

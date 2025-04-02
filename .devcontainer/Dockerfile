@@ -20,3 +20,5 @@ RUN curl -L https://github.com/akinomyoga/ble.sh/releases/download/nightly/ble-n
 RUN curl -L https://github.com/lemonade-command/lemonade/releases/download/v1.1.1/lemonade_linux_amd64.tar.gz | tar xzf - -C /usr/local/bin \
     && echo "alias clip='lemonade --port=42489 copy'" >> /home/$USERNAME/.bashrc  
     
+RUN curl -L https://github.com/eza-community/eza/releases/download/v0.20.24/eza_x86_64-unknown-linux-gnu.tar.gz| tar xzf - -C /usr/local/bin \
+    && echo "alias la='eza -lahF --color --time-style=long-iso --group-directories-first'" >> /home/$USERNAME/.bashrc  

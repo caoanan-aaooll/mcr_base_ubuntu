@@ -2,18 +2,21 @@
 
 ARG VARIANT="noble"
 FROM buildpack-deps:${VARIANT}-curl
-
 LABEL dev.containers.features="common"
 
-ARG VARIANT
-RUN if [ "$VARIANT" = "noble" ]; then \
-        if id "ubuntu" &>/dev/null; then \
-            echo "Deleting user 'ubuntu'  for $VARIANT" && userdel -f -r ubuntu || echo "Failed to delete ubuntu user for $VARIANT"; \  
-        else \
-            echo "User 'ubuntu' does not exist for $VARIANT"; \ 
-        fi; \
-    fi
+ARG USERNAME=ubuntu
 
-# [Optional] Uncomment this section to install additional OS packages.
-# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-#     && apt-get -y install --no-install-recommends <your-package-list-here>
+RUN apt-get update \
+    && apt-get install -y sudo xz-utils \
+    && apt-get clean\
+    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
+    && chmod 0440 /etc/sudoers.d/$USERNAME
+
+RUN curl -L https://github.com/akinomyoga/ble.sh/releases/download/nightly/ble-nightly.tar.xz | tar xJf - -C /usr/local/share \
+    && echo 'source /usr/local/share/ble-nightly/ble.sh' >> /home/$USERNAME/.bashrc  
+    # && echo 'source /usr/local/share/ble-nightly/ble.sh' >> ~/.bashrc 
+
+    
+RUN curl -L https://github.com/lemonade-command/lemonade/releases/download/v1.1.1/lemonade_linux_amd64.tar.gz | tar xzf - -C /usr/local/bin \
+    && echo "alias clip='lemonade --port=42489 copy'" >> /home/$USERNAME/.bashrc  
+    

@@ -24,3 +24,5 @@ RUN curl -L https://github.com/eza-community/eza/releases/download/v0.20.24/eza_
     && echo "alias la='eza -lahF --color --time-style=long-iso --group-directories-first'" >> /home/$USERNAME/.bashrc  
 
 RUN curl -L https://github.com/gitui-org/gitui/releases/download/v0.27.0/gitui-linux-x86_64.tar.gz | tar xzf - -C /usr/local/bin 
+
+RUN curl -o package.deb  -L https://github.com/dandavison/delta/releases/download/0.18.2/git-delta_0.18.2_amd64.deb && dpkg -i package.deb && rm package.deb

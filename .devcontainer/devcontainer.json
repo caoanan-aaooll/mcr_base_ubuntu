@@ -9,10 +9,6 @@
             "installZsh": "false",
             "upgradePackages": "true"
         },
-        "ghcr.io/devcontainers/features/git:1": {
-            "version": "latest",
-            "ppa": "false"
-        },
         "ghcr.io/devcontainers/features/sshd:1": {
             "version": "latest"
         },
@@ -22,7 +18,9 @@
         "ghcr.io/devcontainers-extra/features/fd:1": {},
         "ghcr.io/devcontainers-extra/features/fzf:1": {}
     },
-    "forwardPorts": [8000],
+    "forwardPorts": [
+        8000
+    ],
     "remoteUser": "ubuntu",
     "customizations": {
         "vscode": {

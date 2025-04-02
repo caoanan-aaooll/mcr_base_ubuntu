@@ -7,7 +7,7 @@ LABEL dev.containers.features="common"
 ARG USERNAME=ubuntu
 
 RUN apt-get update \
-    && apt-get install -y sudo xz-utils \
+    && apt-get install -y sudo xz-utils git\
     && apt-get clean\
     && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME

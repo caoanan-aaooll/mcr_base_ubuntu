@@ -13,3 +13,10 @@ record one : Set where
 _+_ : ℕ → ℕ → ℕ
 zero + n = n
 suc m + n = suc (m + n)
+
+
+data Greeting : Set where
+  hello : Greeting
+
+greet : Greeting
+greet = hello
